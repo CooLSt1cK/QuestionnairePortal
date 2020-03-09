@@ -1,0 +1,28 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+
+        <property name="connection.url">jdbc:postgresql://ec2-54-247-125-38.eu-west-1.compute.amazonaws.com:5432/d1lsk0a4q8es0n</property> <!-- BD Mane -->
+        <property name="connection.driver_class">org.postgresql.Driver</property> <!-- DB Driver -->
+        <property name="connection.username">fihtztqjatywsb</property> <!-- DB User -->
+        <property name="connection.password">c5f2f296acc47e22e22a32d228c0a78e92b2f9f3e4c71902a1cb3b7e7dfc3835</property> <!-- DB Password  O*b3prXxbI6$sgipA0MR5iYJU^s4Cz-->
+
+        <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property> <!-- DB Dialect -->
+        <property name="hbm2ddl.auto">update</property> <!-- create / create-drop / update -->
+
+        <property name="show_sql">true</property> <!-- Show SQL in console -->
+        <property name="format_sql">true</property> <!-- Show SQL formatted -->
+
+        <mapping class="com.aleksieienko.questionnaire.portal.db.entity.User"/>
+        <mapping class="com.aleksieienko.questionnaire.portal.db.entity.VerificationToken"/>
+        <mapping class="com.aleksieienko.questionnaire.portal.db.entity.Type"/>
+        <mapping class="com.aleksieienko.questionnaire.portal.db.entity.Field"/>
+        <mapping class="com.aleksieienko.questionnaire.portal.db.entity.FieldName"/>
+        <mapping class="com.aleksieienko.questionnaire.portal.db.entity.Questionnaire"/>
+        <mapping class="com.aleksieienko.questionnaire.portal.db.entity.Response"/>
+
+    </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+</h:head>
+
+<h:body>
+    <p:growl id="growl" life="10000"/>
+    <h:form>
+        <p:panelGrid columns="1" layout="grid" id="basic" >
+
+
+            <h2>Add Field</h2>
+            <p:inputText styleClass="form-control" value="#{editFieldBean.label}" required="true"/>
+            <p:selectOneMenu id="advanced" value="#{editFieldBean.type}"
+                             valueChangeListener="#{editFieldBean.typeChanged}"
+                             onchange="this.form.submit()"
+                             converter="#{typeConverter}"
+                             effect="fade" var="t">
+                <f:selectItems value="#{editFieldBean.types}" var="type" itemLabel="#{type.name}" itemValue="#{type}" />
+                <p:column>
+                    <h:outputText value="#{t.name}" />
+                </p:column>
+            </p:selectOneMenu>
+            <p:inputTextarea rows="1" cols="33" value="#{addFieldBean.option}" placeholder="Here must be options for radio button and combobox."/>
+            <p:selectBooleanCheckbox value="#{editFieldBean.required}" itemLabel="Required"/>
+            <p:selectBooleanCheckbox value="#{editFieldBean.active}" itemLabel="Active"/>
+            <p:commandButton value="Save" id="ajax" update="growl" action="#{editFieldBean.save}" styleClass="ui-priority-primary" />
+
+        </p:panelGrid>
+    </h:form>
+</h:body>
+</html>
