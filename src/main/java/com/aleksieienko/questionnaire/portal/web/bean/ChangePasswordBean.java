@@ -4,6 +4,7 @@ import com.aleksieienko.questionnaire.portal.db.entity.User;
 import com.aleksieienko.questionnaire.portal.service.UserService;
 import com.aleksieienko.questionnaire.portal.web.AttributeNames;
 import com.aleksieienko.questionnaire.portal.web.FacesContextFactory;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
@@ -42,6 +43,11 @@ public class ChangePasswordBean {
 
     public void setOldPassword(String oldPassword) {
         this.oldPassword = oldPassword;
+    }
+
+    @PostConstruct
+    public void init(){
+        authorizeChecker.checkAccess(false);
     }
 
     public String change(){

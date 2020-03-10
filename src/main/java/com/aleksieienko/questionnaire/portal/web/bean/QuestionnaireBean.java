@@ -102,6 +102,7 @@ public class QuestionnaireBean {
 
     @PostConstruct
     public void init(){
+        authorizeChecker.checkAccess(true);
         fields = fieldService.getActive();
         values = new String[fields.size()];
     }

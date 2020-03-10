@@ -18,6 +18,16 @@
             <to-view-id>/views/fields.xhtml?faces-redirect=true</to-view-id>
             <redirect />
         </navigation-case>
+        <navigation-case>
+            <from-outcome>isLogged</from-outcome>
+            <to-view-id>/views/fields.xhtml?faces-redirect=true</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>isNotLogged</from-outcome>
+            <to-view-id>/views/login.xhtml?faces-redirect=true</to-view-id>
+            <redirect />
+        </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/deleteField.xhtml</from-view-id>

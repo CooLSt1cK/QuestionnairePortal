@@ -104,6 +104,7 @@ public class AddFieldBean {
     @PostConstruct
     public void init() {
         types = typeService.getAll();
+        authorizeChecker.checkAccess(false);
     }
 
     public String add(){

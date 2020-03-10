@@ -5,6 +5,7 @@ import com.aleksieienko.questionnaire.portal.service.UserService;
 import com.aleksieienko.questionnaire.portal.service.VerificationTokenService;
 import com.aleksieienko.questionnaire.portal.web.AttributeNames;
 import com.aleksieienko.questionnaire.portal.web.FacesContextFactory;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
@@ -70,6 +71,11 @@ public class EditProfileBean {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    @PostConstruct
+    public void init(){
+        authorizeChecker.checkAccess(false);
     }
 
     public String save(){

@@ -22,6 +22,17 @@ public class AuthorizeChecker {
         this.userService = userService;
     }
 
+    public void checkAccess(boolean isNull){
+        User user = (User) FacesContextFactory.getRequest().getSession().getAttribute(AttributeNames.USER);
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        if(user != null && isNull){
+            facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext, null, "isLogged");
+        }
+        if(user == null && !isNull){
+            facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext, null, "isNotLogged");
+        }
+    }
+
     @PostConstruct
     public void check(){
         User user = (User) FacesContextFactory.getRequest().getSession().getAttribute(AttributeNames.USER);

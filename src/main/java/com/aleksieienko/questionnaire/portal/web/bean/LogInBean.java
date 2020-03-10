@@ -74,6 +74,10 @@ public class LogInBean {
         this.password = password;
     }
 
+    public void init(){
+        authorizeChecker.checkAccess(true);
+    }
+
     public String logIn(){
          String result = "login";
          User user = userService.getByEmail(email);

@@ -4,6 +4,7 @@ import com.aleksieienko.questionnaire.portal.db.entity.Field;
 import com.aleksieienko.questionnaire.portal.service.FieldService;
 import com.aleksieienko.questionnaire.portal.web.AttributeNames;
 import com.aleksieienko.questionnaire.portal.web.FacesContextFactory;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
@@ -35,6 +36,11 @@ public class DeleteFieldBean {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    @PostConstruct
+    public void init(){
+        authorizeChecker.checkAccess(false);
     }
 
     public void delete(PhaseEvent event){

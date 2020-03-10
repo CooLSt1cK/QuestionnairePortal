@@ -55,6 +55,7 @@ public class ResponsesBean {
 
     @PostConstruct
     public void init(){
+        authorizeChecker.checkAccess(false);
         responses = responseService.getAll();
         for(Response r : responses){
             r.getQuestionnaires().sort(Comparator.comparing(o -> o.getFieldName().getId()));

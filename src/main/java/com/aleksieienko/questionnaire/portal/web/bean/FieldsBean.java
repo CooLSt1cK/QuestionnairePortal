@@ -36,6 +36,7 @@ public class FieldsBean {
 
     @PostConstruct
     public void init() {
+        authorizeChecker.checkAccess(false);
         fields = fieldService.getAll();
     }
 }

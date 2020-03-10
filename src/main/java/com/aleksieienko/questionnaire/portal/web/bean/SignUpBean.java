@@ -7,8 +7,9 @@ import com.aleksieienko.questionnaire.portal.web.AttributeNames;
 import com.aleksieienko.questionnaire.portal.web.BeanUtil;
 import com.aleksieienko.questionnaire.portal.web.FacesContextFactory;
 import java.util.UUID;
-import javax.annotation.ManagedBean;
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
@@ -79,6 +80,11 @@ public class SignUpBean {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    @PostConstruct
+    public void init(){
+        authorizeChecker.checkAccess(true);
     }
 
     public String signUp(){

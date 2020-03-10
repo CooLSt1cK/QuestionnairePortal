@@ -54,7 +54,7 @@ public class BeanUtil {
         Cookie cookie = null;
 
         Cookie[] userCookies = request.getCookies();
-        if(userCookies!=null) {
+        if(userCookies != null) {
             for (Cookie c : userCookies) {
                 if (c.getName().equals(name)) {
                     cookie = c;
@@ -85,7 +85,7 @@ public class BeanUtil {
                 Message.RecipientType.TO, InternetAddress.parse(email));
         message.setSubject("Email confirmation.");
 
-        String msg = "http://"+FacesContextFactory.getRequest().getServerName()+ ":"+ FacesContextFactory.getRequest().getServerPort() + FacesContextFactory.getRequest().getContextPath()+"/success.xhtml"+"?verificationToken="+token;
+        String msg = "http://"+FacesContextFactory.getRequest().getServerName()+ ":"+ FacesContextFactory.getRequest().getServerPort() + FacesContextFactory.getRequest().getContextPath()+"/views/confirmVerification.xhtml"+"?token="+token;
 
         MimeBodyPart mimeBodyPart = new MimeBodyPart();
         mimeBodyPart.setContent(msg, "text/html");

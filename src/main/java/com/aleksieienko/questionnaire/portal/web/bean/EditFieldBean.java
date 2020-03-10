@@ -122,7 +122,7 @@ public class EditFieldBean {
 
     @PostConstruct
     public void init() {
-        System.out.println(id);
+        authorizeChecker.checkAccess(false);
         Field field = fieldService.getById(id);
         label = field.getLabel();
         type = field.getType();

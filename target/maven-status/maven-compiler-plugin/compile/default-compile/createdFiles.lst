@@ -42,7 +42,6 @@ com\aleksieienko\questionnaire\portal\service\impl\QuestionnaireServiceImpl.clas
 com\aleksieienko\questionnaire\portal\service\TypeService.class
 com\aleksieienko\questionnaire\portal\service\FieldNameService.class
 com\aleksieienko\questionnaire\portal\db\entity\UserUtil.class
-com\aleksieienko\questionnaire\portal\launch\Main.class
 com\aleksieienko\questionnaire\portal\web\converter\TypeConverter.class
 com\aleksieienko\questionnaire\portal\web\bean\LogInBean.class
 com\aleksieienko\questionnaire\portal\web\bean\ConfirmVerificationBean.class
