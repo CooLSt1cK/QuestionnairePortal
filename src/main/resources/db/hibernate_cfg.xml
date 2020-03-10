@@ -5,10 +5,10 @@
 <hibernate-configuration>
     <session-factory>
 
-        <property name="connection.url">jdbc:postgresql://ec2-54-247-125-38.eu-west-1.compute.amazonaws.com:5432/d1lsk0a4q8es0n</property> <!-- BD Mane -->
+        <property name="connection.url">jdbc:postgresql://ec2-46-137-84-173.eu-west-1.compute.amazonaws.com:5432/d8pa4bidatf0ho</property> <!-- BD Mane -->
         <property name="connection.driver_class">org.postgresql.Driver</property> <!-- DB Driver -->
-        <property name="connection.username">fihtztqjatywsb</property> <!-- DB User -->
-        <property name="connection.password">c5f2f296acc47e22e22a32d228c0a78e92b2f9f3e4c71902a1cb3b7e7dfc3835</property> <!-- DB Password  O*b3prXxbI6$sgipA0MR5iYJU^s4Cz-->
+        <property name="connection.username">gxcomxkndckxov</property> <!-- DB User -->
+        <property name="connection.password">2ff34d92a8fc30908c52dbec21e17c3e02e06299f67ee18d804c52df94ea6541</property> <!-- DB Password  O*b3prXxbI6$sgipA0MR5iYJU^s4Cz-->
 
         <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property> <!-- DB Dialect -->
         <property name="hbm2ddl.auto">update</property> <!-- create / create-drop / update -->

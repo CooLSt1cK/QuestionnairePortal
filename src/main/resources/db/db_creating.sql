@@ -84,6 +84,7 @@ REFERENCES public.users (id) MATCH SIMPLE
 	ON DELETE NO ACTION
 );
 
+//If you need your role.
 CREATE ROLE qp_admin WITH LOGIN PASSWORD '2IFg%oziprPP$xlX';
 GRANT CONNECT ON DATABASE questionnaire_portal TO qp_admin;
 GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public to qp_admin;
