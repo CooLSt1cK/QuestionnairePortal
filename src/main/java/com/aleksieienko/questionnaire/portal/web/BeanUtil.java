@@ -54,12 +54,14 @@ public class BeanUtil {
         Cookie cookie = null;
 
         Cookie[] userCookies = request.getCookies();
+        if(userCookies!=null) {
             for (Cookie c : userCookies) {
                 if (c.getName().equals(name)) {
                     cookie = c;
                     return cookie;
                 }
             }
+        }
         return null;
     }
 
