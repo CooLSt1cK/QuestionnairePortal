@@ -1,0 +1,12 @@
+
+Fsquid:S1148B"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¡µÛŠ.
+Fsquid:S1148q"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8™ÒÛŠ.
+Isquid:S11682"+Return an empty collection instead of null.(¥¹ï8ß™·ÛŠ.
+Fsquid:S1148R"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8½—¦×‹.
+Isquid:S1168C"+Return an empty collection instead of null.(¥¹ï8¡µÛŠ.
+Fsquid:S1148!"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8“ÇÛŠ.
+lsquid:S2259"IA "NullPointerException" could be thrown; "transaction" is nullable here.(ì‚—ôúÿÿÿÿ8™ÒÛŠ.
+Fsquid:S11481"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8òĞÓÛŠ.
+Fsquid:S1148b"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ß™·ÛŠ.
+Gsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ÙÒÍÛŠ.
+lsquid:S2259o"IA "NullPointerException" could be thrown; "transaction" is nullable here.(ì‚—ôúÿÿÿÿ8òĞÓÛŠ.

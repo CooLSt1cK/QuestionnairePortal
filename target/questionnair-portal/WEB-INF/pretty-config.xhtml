@@ -1,0 +1,28 @@
+<pretty-config xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
+                      http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
+
+    <url-mapping id="editField">
+        <pattern value="/fields/" /> <!--url pattern-->
+        <view-id value="/views/fields.xhtml" /> <!--name of the page you want to change the url-->
+    </url-mapping>
+</pretty-config>
+<filter>
+<filter-name>Pretty Filter</filter-name>
+<filter-class>com.ocpsoft.pretty.PrettyFilter</filter-class>
+</filter>
+
+<filter-mapping>
+<filter-name>Pretty Filter</filter-name>
+<url-pattern>/*</url-pattern>
+<dispatcher>FORWARD</dispatcher>
+<dispatcher>REQUEST</dispatcher>
+</filter-mapping>
+
+
+<dependency>
+<groupId>com.ocpsoft</groupId>
+<artifactId>ocpsoft-pretty-faces</artifactId>
+<version>2.0.3</version>
+</dependency>

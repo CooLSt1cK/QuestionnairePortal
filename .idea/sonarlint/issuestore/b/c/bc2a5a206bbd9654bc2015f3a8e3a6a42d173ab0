@@ -1,0 +1,7 @@
+
+?squid:S1148b"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+Vsquid:S1118":Add a private constructor to hide the implicit public one.(ï±¶÷ýÿÿÿÿ
+Qsquid:S1161J":Add the "@Override" annotation above this method signature(‡èú×
+]squid:S1192!"FDefine a constant instead of duplicating this literal "email" 5 times.(œ²å„
+@squid:S3330"$Add the "HttpOnly" cookie attribute.(Ô®£úùÿÿÿÿ
+Vsquid:S4973l"9Use the "equals" method if value comparison was intended.(œŽšO8¡™ã€Œ.
