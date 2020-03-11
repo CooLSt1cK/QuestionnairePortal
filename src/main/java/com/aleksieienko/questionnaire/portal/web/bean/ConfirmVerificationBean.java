@@ -42,12 +42,12 @@ public class ConfirmVerificationBean {
         VerificationToken verificationToken = verificationTokenService.getTokenByToken(token);
         Calendar calendar = Calendar.getInstance();
         if(verificationToken == null || (verificationToken.getExpiryDate().getTime()-calendar.getTime().getTime())<=0) {
-            FacesContextFactory.getRequest().setAttribute(AttributeNames.SUCCESS_BODY,"Access denied!");
+            FacesContextFactory.getRequest().getSession().setAttribute(AttributeNames.SUCCESS_BODY,"Access denied!");
             facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext, null, "success");
             return;
         }
         verificationTokenService.remove(verificationToken);
-        facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext, null, "success");
+        facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext, null, "login");
     }
 
 }

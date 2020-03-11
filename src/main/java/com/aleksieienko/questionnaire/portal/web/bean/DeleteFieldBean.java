@@ -50,7 +50,7 @@ public class DeleteFieldBean {
             facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext, null, "success");
         }else {
             FacesContextFactory.getRequest().setAttribute(AttributeNames.SUCCESS_BODY, "Access denied!");
-            facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext, null, "failure");
+            facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext, null, "success");
         }
     }
 }

@@ -99,7 +99,6 @@ public class SignUpBean {
                 ,lastName.equals("") ? null : lastName
                 ,phone.equals("") ? null : phone);
         userService.add(user, password);
-        System.out.println(user);
         if(user.getId()==null){
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Wrong data!", null);
             FacesContext.getCurrentInstance().addMessage(null, message);
@@ -108,7 +107,7 @@ public class SignUpBean {
         String token = UUID.randomUUID().toString();
         verificationTokenService.createVerificationToken(user,token);
         BeanUtil.sendMail(user.getEmail(),token);
-        FacesContextFactory.getRequest().setAttribute(AttributeNames.SUCCESS_BODY, "We send message to your email to confirm it.");
+        FacesContextFactory.getRequest().getSession().setAttribute(AttributeNames.SUCCESS_BODY, "We send message to your email to confirm it.");
         return "success?faces-redirect=true";
     }
 }

@@ -1,6 +1,7 @@
 package com.aleksieienko.questionnaire.portal.web.bean;
 
 import com.aleksieienko.questionnaire.portal.db.entity.Field;
+import com.aleksieienko.questionnaire.portal.db.entity.FieldName;
 import com.aleksieienko.questionnaire.portal.db.entity.Type;
 import com.aleksieienko.questionnaire.portal.service.FieldNameService;
 import com.aleksieienko.questionnaire.portal.service.FieldService;
@@ -26,16 +27,10 @@ public class AddFieldBean {
 
     @ManagedProperty(value = "#{fieldServiceImpl}")
     private FieldService fieldService;
-    @ManagedProperty(value = "#{fieldNameService}")
+    @ManagedProperty(value = "#{fieldNameServiceImpl}")
     private FieldNameService fieldNameService;
     @ManagedProperty(value = "#{typeServiceImpl}")
     private TypeService typeService;
-    @ManagedProperty(value = "#{authorizeChecker}")
-    private AuthorizeChecker authorizeChecker;
-
-    public void setAuthorizeChecker(AuthorizeChecker authorizeChecker) {
-        this.authorizeChecker = authorizeChecker;
-    }
 
     public void setFieldNameService(FieldNameService fieldNameService) {
         this.fieldNameService = fieldNameService;
@@ -104,7 +99,6 @@ public class AddFieldBean {
     @PostConstruct
     public void init() {
         types = typeService.getAll();
-        authorizeChecker.checkAccess(false);
     }
 
     public String add(){
@@ -118,6 +112,7 @@ public class AddFieldBean {
             FacesContext.getCurrentInstance().addMessage(null, message);
             return "addField";
         }
+        fieldNameService.add(new FieldName(null,field.getLabel()));
         return "fields?faces-redirect=true";
     }
 }

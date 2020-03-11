@@ -83,7 +83,7 @@ public class EditProfileBean {
         User user = (User) FacesContextFactory.getRequest().getSession().getAttribute(AttributeNames.USER);
         User newUser = new User(user.getId(),email,user.getHash(),user.getSalt(),firstName,lastName,phone);
         if(userService.updateUser(newUser)){
-            result = "success";
+            result = "success?faces-redirect=true";
         }
         return result;
     }

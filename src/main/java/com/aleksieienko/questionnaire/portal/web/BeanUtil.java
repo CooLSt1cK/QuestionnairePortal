@@ -85,7 +85,7 @@ public class BeanUtil {
                 Message.RecipientType.TO, InternetAddress.parse(email));
         message.setSubject("Email confirmation.");
 
-        String msg = "http://"+FacesContextFactory.getRequest().getServerName()+ ":"+ FacesContextFactory.getRequest().getServerPort() + FacesContextFactory.getRequest().getContextPath()+"/views/confirmVerification.xhtml"+"?token="+token;
+        String msg = "http://"+FacesContextFactory.getRequest().getServerName()+ ":"+ FacesContextFactory.getRequest().getServerPort() + FacesContextFactory.getRequest().getContextPath()+"/confirm/verification/token/"+token;
 
         MimeBodyPart mimeBodyPart = new MimeBodyPart();
         mimeBodyPart.setContent(msg, "text/html");
@@ -107,7 +107,7 @@ public class BeanUtil {
         for (int i = 0; i < fieldNames.size(); i++) {
             Questionnaire tempQ;
             if(j < response.getQuestionnaires().size() &&
-                    response.getQuestionnaires().get(j).getFieldName().getId() == fieldNames.get(i).getId()){
+                    response.getQuestionnaires().get(j).getFieldName().getId().equals(fieldNames.get(i).getId())){
                 tempQ = response.getQuestionnaires().get(j);
                 j++;
             }else {

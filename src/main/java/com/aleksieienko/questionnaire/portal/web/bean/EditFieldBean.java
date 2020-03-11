@@ -6,6 +6,7 @@ import com.aleksieienko.questionnaire.portal.service.FieldService;
 import com.aleksieienko.questionnaire.portal.service.TypeService;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
@@ -16,7 +17,7 @@ import javax.faces.event.ValueChangeEvent;
 @RequestScoped
 public class EditFieldBean {
     @ManagedProperty(value = "#{param['id']}")
-    private Integer id;
+    private String id;
     private String label;
     private Type type;
     private List<Type> types;
@@ -44,11 +45,11 @@ public class EditFieldBean {
         this.typeService = typeService;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -110,35 +111,34 @@ public class EditFieldBean {
 
     public void typeChanged(ValueChangeEvent e) {
         type = (Type) e.getNewValue();
-        hideOption();
         FacesContext.getCurrentInstance().renderResponse();
-    }
-
-    public void hideOption(){
-        visible = type != null
-                && (type.getName().equals("radio button")
-                || type.getName().equals("combobox"));
     }
 
     @PostConstruct
     public void init() {
         authorizeChecker.checkAccess(false);
-        Field field = fieldService.getById(id);
-        label = field.getLabel();
-        type = field.getType();
-        option = field.getOption();
-        required = field.getRequired();
-        active = field.getActive();
-        types = typeService.getAll();
-        hideOption();
+        try {
+            Field field = fieldService.getById(Integer.parseInt(id));
+            label = field.getLabel();
+            type = field.getType();
+            option = field.getOption();
+            required = field.getRequired();
+            active = field.getActive();
+            types = typeService.getAll();
+        } catch (NumberFormatException e){
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext, null, "fields");
+        }
     }
 
     public String save(){
-        Field field= new Field(id,label,type.getId(),option,required,active,type);
-        fieldService.add(field);
-        if(field.getId() == null){
-            return "editField?id=id";
+        Field field= new Field(Integer.parseInt(id),label,type.getId(),option,required,active,type);
+        System.out.println(field);
+        if(!fieldService.update(field)){
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Wrong data", null);
+            FacesContext.getCurrentInstance().addMessage(null, message);
+            return "";
         }
-        return "fields?faces-redirect=true";
+        return "fields";
     }
 }

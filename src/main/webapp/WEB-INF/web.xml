@@ -10,7 +10,15 @@
     <param-value>/WEB-INF/passthrough.taglib.xml;/WEB-INF/friendly_markup.taglib.xml</param-value>
   </context-param>
 
+  <context-param>
+    <param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+    <param-value>.xhtml</param-value>
+  </context-param>
 
+  <context-param>
+    <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+    <param-value>client</param-value>
+  </context-param>
 
   <context-param>
     <param-name>primefaces.THEME</param-name>
@@ -27,5 +35,17 @@
     <url-pattern>/</url-pattern>
   </servlet-mapping>
 
+  <filter>
+    <filter-name>Pretty Filter</filter-name>
+    <filter-class>com.ocpsoft.pretty.PrettyFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>Pretty Filter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+  </filter-mapping>
 
 </web-app>

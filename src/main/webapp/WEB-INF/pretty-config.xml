@@ -1,0 +1,57 @@
+<pretty-config xmlns="http://ocpsoft.com/prettyfaces/3.3.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://ocpsoft.com/prettyfaces/3.3.0
+                                   		http://ocpsoft.com/xml/ns/prettyfaces/ocpsoft-pretty-faces-3.3.0.xsd">
+
+
+       <url-mapping id="fields">
+           <pattern value="/fields/" />
+           <view-id value="/views/fields.xhtml" />
+       </url-mapping>
+
+    <url-mapping id="editField">
+        <pattern value="/field/#{id}/" />
+        <view-id value="/views/editField.xhtml" />
+    </url-mapping>
+
+    <url-mapping id="success">
+        <pattern value="/success/" />
+        <view-id value="/views/success.xhtml" />
+    </url-mapping>
+
+    <url-mapping id="responses">
+        <pattern value="/responses/" />
+        <view-id value="/views/responses.xhtml" />
+    </url-mapping>
+
+    <url-mapping id="questionnaire">
+        <pattern value="/questionnaire/" />
+        <view-id value="/views/questionnaire.xhtml" />
+    </url-mapping>
+
+    <url-mapping id="confirmVerification/">
+        <pattern value="/confirm/verification/token/#{token}" />
+        <view-id value="/views/confirmVerification.xhtml" />
+    </url-mapping>
+
+    <url-mapping id="logIn">
+        <pattern value="/logIn/" />
+        <view-id value="/views/login.xhtml" />
+    </url-mapping>
+
+    <url-mapping id="signUp">
+        <pattern value="/signUp/" />
+        <view-id value="/views/signUp.xhtml" />
+    </url-mapping>
+
+    <url-mapping id="changePassword">
+        <pattern value="/change/password/" />
+        <view-id value="/views/changePassword.xhtml" />
+    </url-mapping>
+
+    <url-mapping id="editProfile">
+        <pattern value="/edit/profile/" />
+        <view-id value="/views/editProfile.xhtml" />
+    </url-mapping>
+
+</pretty-config>

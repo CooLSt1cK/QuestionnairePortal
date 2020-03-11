@@ -8,6 +8,8 @@ import com.aleksieienko.questionnaire.portal.service.FieldNameService;
 import com.aleksieienko.questionnaire.portal.service.FieldService;
 import com.aleksieienko.questionnaire.portal.service.QuestionnaireService;
 import com.aleksieienko.questionnaire.portal.service.ResponseService;
+import com.aleksieienko.questionnaire.portal.web.AttributeNames;
+import com.aleksieienko.questionnaire.portal.web.FacesContextFactory;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -84,9 +86,10 @@ public class QuestionnaireBean {
         List<Questionnaire> list = new ArrayList<>();
         Response response = new Response();
         for(int i=0;i<fields.size();i++){
+            System.out.println(values[i]);
             if(values[i]==null || values[i].isEmpty()){
                 continue;
-            }/**/
+            }
             FieldName fieldName = fieldNameService.getByName(fields.get(i).getLabel());
             list.add(new Questionnaire(null,values[i],fieldName));
         }
@@ -96,6 +99,8 @@ public class QuestionnaireBean {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Wrong data", null);
             FacesContext.getCurrentInstance().addMessage(null, message);
             return "questionnaire";
+        }else{
+            FacesContextFactory.getRequest().getSession().setAttribute(AttributeNames.SUCCESS_BODY,"Thank You!\nYour response was saved.");
         }
         return "success?faces-redirect=true";
     }

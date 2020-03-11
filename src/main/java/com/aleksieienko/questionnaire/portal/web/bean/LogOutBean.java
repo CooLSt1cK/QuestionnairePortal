@@ -9,11 +9,11 @@ import javax.faces.bean.RequestScoped;
 
 @ManagedBean
 @RequestScoped
-public class logOutBean  {
+public class LogOutBean {
     public String logOut(){
         User user = (User) FacesContextFactory.getRequest().getSession().getAttribute(AttributeNames.USER);
         FacesContextFactory.getRequest().getSession().setAttribute(AttributeNames.USER,null);
         BeanUtil.setCookie(user,-1);
-        return "logIn";
+        return "login";
     }
 }

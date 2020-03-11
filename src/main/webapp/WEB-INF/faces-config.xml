@@ -4,14 +4,6 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
     http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
     <navigation-rule>
-        <from-view-id>/confirmVerification.xhtml</from-view-id>
-        <navigation-case>
-            <from-outcome>success</from-outcome>
-            <to-view-id>/success.xhtml</to-view-id>
-            <redirect />
-        </navigation-case>
-    </navigation-rule>
-    <navigation-rule>
         <from-view-id>/*</from-view-id>
         <navigation-case>
             <from-outcome>logged</from-outcome>
@@ -28,17 +20,29 @@
             <to-view-id>/views/login.xhtml?faces-redirect=true</to-view-id>
             <redirect />
         </navigation-case>
-    </navigation-rule>
-    <navigation-rule>
-        <from-view-id>/deleteField.xhtml</from-view-id>
         <navigation-case>
-            <from-outcome>success</from-outcome>
-            <to-view-id>/fields.xhtml?faces-redirect=true</to-view-id>
-            <redirect/>
+            <from-outcome>responses</from-outcome>
+            <to-view-id>/views/responses.xhtml?faces-redirect=true</to-view-id>
+            <redirect />
         </navigation-case>
         <navigation-case>
-            <from-outcome>failure</from-outcome>
-            <to-view-id>/success.xhtml?faces-redirect=true</to-view-id>
+            <from-outcome>fields</from-outcome>
+            <to-view-id>/views/fields.xhtml?faces-redirect=true</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>login</from-outcome>
+            <to-view-id>/views/login.xhtml?faces-redirect=true</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+        <from-outcome>success</from-outcome>
+        <to-view-id>/views/success.xhtml?faces-redirect=true</to-view-id>
+        <redirect/>
+    </navigation-case>
+        <navigation-case>
+            <from-outcome>confirmVerification</from-outcome>
+            <to-view-id>/views/confirmVerification.xhtml?faces-redirect=true</to-view-id>
             <redirect/>
         </navigation-case>
     </navigation-rule>

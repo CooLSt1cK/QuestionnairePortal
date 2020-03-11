@@ -1,21 +1,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
     <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
 </h:head>
 
-<h:body class="text-center bg-secondary">
+<h:body>
+    <ui:composition template="/WEB-INF/include/templLayout.xhtml">
+    <ui:define name="content">
+        <p:panel id="basic">
     <h:form>
-        <p:dataTable var="field" value="#{fieldsBean.fields}" paginator="true" id="fields"
+        <p:growl id="growl" life="10000" />
+        <div class="ui-g ui-fluid">
+            <div class="ui-g-12 ui-md-10"><h3>Fields</h3></div>
+        <div class="ui-g-12 ui-md-2"><p:commandButton value="Add Field" icon="ui-icon-plus" type="button" onclick="PF('addDialog').show();" /> </div>
+        </div>
+        <p:dataTable var="field" value="#{fieldsBean.fields}" paginator="true" id="fields" rows="6"
                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                    rowsPerPageTemplate="2,12">
-
-            <f:facet name="header">
-                Fields
-            </f:facet>
+                    rowsPerPageTemplate="6,12,30">
 
             <p:column headerText="Label">
                 <h:outputText value="#{field.label}" />
@@ -34,11 +39,40 @@
             </p:column>
 
             <p:column headerText="">
-                <a href="editField.xhtml?id=#{field.id}"><i class="pi pi-pencil"></i></a>
-                <a href="deleteField.xhtml?id=#{field.id}"><i class="pi pi-trash"></i></a>
+                <p:button href="/field/${field.id}/" icon="ui-icon-pencil" style="margin-right:5px;"/>
+                <p:button outcome="deleteField" icon="ui-icon-trash">
+                    <f:param name="id" value="#{field.id}" />
+                </p:button>
             </p:column>
 
         </p:dataTable>
+        <p:dialog header="Add Field" widgetVar="addDialog" modal="true" minHeight="40">
+            <div class="ui-g ui-fluid">
+            <p:panelGrid columns="1" layout="grid">
+            <h:outputLabel for="label" value="Label:" />
+            <p:inputText id="label" styleClass="form-control" value="#{addFieldBean.label}" required="true"/>
+            <h:outputLabel for="type" value="Type:" />
+            <p:selectOneMenu id="type" value="#{addFieldBean.type}"
+                             valueChangeListener="#{addFieldBean.typeChanged}"
+                             onchange="this.form.submit()"
+                             converter="#{typeConverter}"
+                             effect="fade" var="t">
+                <f:selectItems value="#{addFieldBean.types}" var="type" itemLabel="#{type.name}" itemValue="#{type}" />
+                <p:column>
+                    <h:outputText value="#{t.name}" />
+                </p:column>
+            </p:selectOneMenu>
+            <h:outputLabel for="option" value="Option:" />
+            <p:inputTextarea rows="1" id="option" cols="33" value="#{addFieldBean.option}" placeholder="Here must be options for radio button and combobox."/>
+            <p:selectBooleanCheckbox value="#{addFieldBean.required}" itemLabel="Required"/>
+            <p:selectBooleanCheckbox value="#{addFieldBean.active}" itemLabel="Active"/>
+            <p:commandButton value="Save" id="ajax" update="growl" action="#{addFieldBean.add}" styleClass="ui-priority-primary" />
+            </p:panelGrid>
+            </div>
+        </p:dialog>
     </h:form>
+        </p:panel>
+    </ui:define>
+    </ui:composition>
 </h:body>
 </html>

@@ -1,18 +1,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
 </h:head>
 
 <h:body>
-    <p:growl id="growl" life="10000"/>
+
+    <ui:composition template="/WEB-INF/include/templLayout.xhtml">
+    <ui:define name="content">
+        <div class="ui-g ui-fluid">
+        <div class="ui-g-12 ui-md-3"></div>
+        <div class="ui-g-12 ui-md-6">
+        <p:growl id="growl" life="10000"/>
     <h:form>
-        <p:panelGrid columns="1" layout="grid" id="basic" >
+        <p:panelGrid columns="1" layout="grid">
 
-
-            <h2>Add Field</h2>
+            <h2>Edit Field</h2>
             <p:inputText styleClass="form-control" value="#{editFieldBean.label}" required="true"/>
             <p:selectOneMenu id="advanced" value="#{editFieldBean.type}"
                              valueChangeListener="#{editFieldBean.typeChanged}"
@@ -24,12 +30,16 @@
                     <h:outputText value="#{t.name}" />
                 </p:column>
             </p:selectOneMenu>
-            <p:inputTextarea rows="1" cols="33" value="#{addFieldBean.option}" placeholder="Here must be options for radio button and combobox."/>
+            <p:inputTextarea rows="1" cols="33" value="#{editFieldBean.option}" placeholder="Here must be options for radio button and combobox."/>
             <p:selectBooleanCheckbox value="#{editFieldBean.required}" itemLabel="Required"/>
             <p:selectBooleanCheckbox value="#{editFieldBean.active}" itemLabel="Active"/>
             <p:commandButton value="Save" id="ajax" update="growl" action="#{editFieldBean.save}" styleClass="ui-priority-primary" />
-
         </p:panelGrid>
     </h:form>
+        </div>
+            <div class="ui-g-12 ui-md-3"></div>
+        </div>
+    </ui:define>
+    </ui:composition>
 </h:body>
 </html>

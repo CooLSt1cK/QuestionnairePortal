@@ -2,16 +2,20 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
 </h:head>
 
 <h:body>
     <p:growl id="growl" life="10000" />
+    <div class="ui-g ui-fluid">
+    <div class="ui-g-12 ui-md-3"></div>
+    <div class="ui-g-12 ui-md-6">
     <h:form>
         <p:panelGrid columns="1" layout="grid" id="basic" styleClass="showcase-text-align-center">
             <c:set var="i" value="0"/>
-            <h2>Questionnaire</h2>
+            <h2 style="text-align: center;">Questionnaire</h2>
             <c:forEach var="field" items="#{questionnaireBean.fields}">
                 <p:outputLabel for="@next" value="#{field.label}"/>
                 <c:if test="#{field.type.name eq 'single line text'}">
@@ -42,5 +46,8 @@
             <p:commandButton value="Submit" id="ajax" update="growl" action="#{questionnaireBean.submit}" styleClass="ui-priority-primary" />
         </p:panelGrid>
     </h:form>
+    </div>
+        <div class="ui-g-12 ui-md-3"></div>
+    </div>
 </h:body>
 </html>

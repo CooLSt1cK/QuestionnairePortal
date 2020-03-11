@@ -55,7 +55,7 @@ public class ChangePasswordBean {
         HttpSession session = FacesContextFactory.getRequest().getSession();
         User user = (User) session.getAttribute(AttributeNames.USER);
         if(userService.changePassword(user,newPassword,oldPassword)){
-            FacesContextFactory.getRequest().setAttribute(AttributeNames.SUCCESS_BODY, "Success");
+            FacesContextFactory.getRequest().getSession().setAttribute(AttributeNames.SUCCESS_BODY, "Success");
             result = "success";
         }else{
             result="changePassword";

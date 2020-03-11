@@ -9,6 +9,7 @@ import com.aleksieienko.questionnaire.portal.web.BeanUtil;
 import com.aleksieienko.questionnaire.portal.web.FacesContextFactory;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -74,6 +75,7 @@ public class LogInBean {
         this.password = password;
     }
 
+    @PostConstruct
     public void init(){
         authorizeChecker.checkAccess(true);
     }
@@ -90,7 +92,8 @@ public class LogInBean {
                  result = "fields?faces-redirect=true";
                  System.out.println(result);
              }else {
-                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Wrong data!"));
+                 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Wrong data!", null);
+                 FacesContext.getCurrentInstance().addMessage(null, message);
              }
          } catch (InvalidKeySpecException e) {
              e.printStackTrace();
